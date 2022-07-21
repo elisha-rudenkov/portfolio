@@ -2,7 +2,9 @@
   <div class="home">
     <div class="right" v-motion-slide-bottom :delay="600">
       <div class="vertical">
-        <a href="mailto:hello@elisharudenkov.com">hello@elisharudenkov.com</a>
+        <a href="mailto:hello@elisharudenkov.com" target="_blank" tabindex="-1"
+          >hello@elisharudenkov.com</a
+        >
       </div>
     </div>
     <div class="left" v-motion-slide-bottom :delay="600">
@@ -59,7 +61,9 @@
         fluid user experience. Currently, making awesome stuff at
         <a href="https://doughrise.co/">DoughRise</a>.
       </p>
-      <div class="resume-btn" v-motion-slide-bottom :delay="400">Resume</div>
+      <div class="resume-btn" v-motion-slide-bottom :delay="400">
+        <router-link to="/resume">Resume</router-link>
+      </div>
     </section>
     <section class="projects">
       <div class="info">
@@ -81,6 +85,8 @@
           icon_name="in-development.svg"
           v-motion-slide-visible-once-right
           :delay="100"
+          @click="$router.push('/projects/polyflow')"
+
         ></projectCardVue>
 
         <projectCardVue
@@ -92,6 +98,7 @@
           icon_name="private.svg"
           v-motion-slide-visible-once-right
           :delay="200"
+          @click="$router.push('/projects/bnft')"
         ></projectCardVue>
 
         <projectCardVue
@@ -111,7 +118,7 @@
     <section class="stack">
       <h2>My favorite stack</h2>
 
-      <div class="carousell" v-motion-slide-visible-once-top :delay="200">
+      <div class="carousell" v-motion-slide-visible-once-right>
         <div class="carousell-item">
           Firebase
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -195,9 +202,24 @@
         I am always looking forward to collaborating with awesome people and
         making epic stuff. Drop me a line if you have something in mind.
       </p>
-      <div class="hello-btn">Say Hello</div>
+      <div
+        class="hello-btn"
+        @click="
+          toggleNotification(3000);
+          copyToClipboard('hello@elisharudenkov.com');
+        "
+      >
+        Say Hello
+      </div>
+      <div
+        class="copy-notification"
+        v-if="show_notification"
+        v-motion-slide-left
+      >
+        My email is now in your clipboard 😉
+      </div>
     </section>
-    <div class="footer">Built with love in California</div>
+    <div class="footer">Built with ☕ in California</div>
   </div>
 </template>
 
@@ -208,6 +230,42 @@ import projectCardVue from "@/components/home/project-card.vue";
 export default defineComponent({
   name: "HomeView",
   components: { projectCardVue },
+
+  data() {
+    return {
+      show_notification: false as boolean,
+    };
+  },
+  methods: {
+    /**
+     * Shows a notification for a given amount of time.
+     * Sets show_notification to a given state value [optional]
+     * @param ms Time for the notification to be shown
+     * @param state Optional param, if a specific notification state needs to be set.
+     */
+    toggleNotification(ms: number, state?: boolean) {
+      if (typeof state === "undefined") {
+        this.show_notification = !this.show_notification;
+      } else {
+        this.show_notification = state;
+      }
+
+      setTimeout(() => {
+        if (typeof state === "undefined") {
+          this.show_notification = !this.show_notification;
+        } else {
+          this.show_notification = !state;
+        }
+      }, ms);
+    },
+    /**
+     * Copies a given string to the clipboard.
+     * @param text Text to be copied
+     */
+    copyToClipboard(text: string) {
+      navigator.clipboard.writeText(text);
+    },
+  },
 });
 </script>
 
@@ -313,21 +371,26 @@ section {
     max-width: 540px;
   }
   a {
-    color: #ffafcc;
+    color: var(--text-color);
     text-decoration: none;
     text-decoration-skip-ink: auto;
     font-weight: 500;
   }
   .resume-btn {
-    margin: 2rem 0;
-    padding: 16px 32px;
-    background: var(--accent-4);
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .resume-btn:hover {
-    background: var(--accent-5);
+    margin-top: 2rem;
+
+    a {
+      margin: 2rem 0;
+      padding: 16px 32px;
+      background: var(--accent-4);
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+
+      :hover {
+        background: var(--accent-5);
+      }
+    }
   }
 }
 
@@ -392,12 +455,12 @@ section {
       display: flex;
       flex-direction: column;
 
-      font-size: 2rem;
+      font-size: 20px;
 
       align-items: center;
 
       svg {
-        width: 6rem;
+        width: 4rem;
       }
     }
   }
@@ -417,7 +480,7 @@ section {
 
 .about {
   display: flex;
-
+  position: relative;
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
@@ -434,7 +497,7 @@ section {
     margin-top: 3rem;
     line-height: 1.1;
     font-weight: 800;
-    font-size: clamp(20px, 4vw, 40px);
+    font-size: clamp(40px, 4vw, 40px);
     margin-bottom: 4rem;
   }
 
@@ -446,9 +509,26 @@ section {
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      text-decoration-skip-ink: auto;
+      font-weight: 500;
+    }
   }
   .hello-btn:hover {
     background: var(--accent-3);
+  }
+
+  .copy-notification {
+    position: absolute;
+    bottom: 4rem;
+    padding: 2rem 3rem;
+    background-color: var(--accent-4);
+    border-radius: 16px;
+    font-size: clamp(14px, 4vw, 18px);
+    font-weight: 600;
   }
 }
 
@@ -476,10 +556,10 @@ section {
     margin-bottom: 1rem;
   }
   .projects .carousell .carousell-item {
-    font-size: 1.5rem;
+    font-size: 18px;
 
     svg {
-      width: 3rem;
+      width: 15px;
     }
   }
 }
