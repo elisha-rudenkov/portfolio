@@ -11,6 +11,28 @@
       </div>
       <div class="projects-wrap">
         <projectCardVue
+          title="Evialina Photography"
+          description="A landing page for a small photography business."
+          website_link="www.evialinaphotography.com"
+          logo_name="ev_logo.png"
+          :show_website_link="true"
+          status="Private"
+          icon_name="private.svg"
+          @click="$router.push('/projects/evphoto')"
+        ></projectCardVue>
+
+        <projectCardVue
+          title="My Florida Painters"
+          description="A landing page for a commercial painting business."
+          website_link="www.myfloridapainting.com"
+          logo_name="mfp-logo.svg"
+          :show_website_link="true"
+          status="Private"
+          icon_name="private.svg"
+          @click="$router.push('/projects/myfloridapainters')"
+        ></projectCardVue>
+
+        <projectCardVue
           title="Polyflow"
           description="A collaborative tool for creating and sharing playlists for a party of any size."
           website_link="www.polyflow.it"
@@ -19,7 +41,6 @@
           status="In development"
           icon_name="in-development.svg"
           @click="$router.push('/projects/polyflow')"
-
         ></projectCardVue>
 
         <projectCardVue

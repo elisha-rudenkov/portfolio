@@ -113,22 +113,30 @@ export default defineComponent({
     line-height: 1.1;
     font-weight: 800;
     font-size: clamp(40px, 4vw, 40px);
-    margin-bottom: 2rem;
   }
 }
 img {
   width: 100%;
   height: auto;
   max-width: 1800px;
-  border-radius: 10px;
 }
 p {
   margin: 0px;
-  margin-top: 3rem;
   line-height: 1.1;
   font-weight: 300;
   font-size: clamp(20px, 4vw, 30px);
   margin-bottom: 2rem;
+}
+
+a{
+  all: unset;
+  color: var(--accent-5);
+  font-weight: 600;
+  font-size: clamp(16px, 4vw, 25px);
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
 }
 .mobile-wrap {
   display: flex;

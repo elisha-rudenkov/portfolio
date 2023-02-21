@@ -6,7 +6,7 @@
     </div>
 
     <div class="experience" v-motion-slide-bottom :delay="300">
-      <h2>Experience</h2>
+      <h2>Experiences</h2>
       <div class="job-box">
         <div class="job-info">
           <div class="company-name">DoughRise</div>
@@ -16,13 +16,20 @@
 
         <div class="experiences">
           <div class="exp-item">
-            - Developed and maintained web version of the app
+            - Worked with the AGILE product development team to develop the
+            DoughRise platform
           </div>
-          <div class="exp-item">- Optimized existing codebase</div>
           <div class="exp-item">
-            - Managed Plaid integration in the web version
+            - Developed the entire backend infrastructure for the fintech
+            website using Firebase
           </div>
-          <div class="exp-item">- Developed in-house APIs</div>
+          <div class="exp-item">
+            - Built out the frontend using Vue.js paired with Typescript
+          </div>
+          <div class="exp-item">
+            - Leveraged GitHub, Firestore, Firebase, and other technologies to
+            ensure high functionality
+          </div>
         </div>
       </div>
 
@@ -31,7 +38,7 @@
           <div class="company-name">Learning Genie</div>
           <div class="job-title">- Educator Success Intern</div>
         </div>
-        <div class="dates">October 2020 - Present</div>
+        <div class="dates">October 2020 - July 2022</div>
 
         <div class="experiences">
           <div class="exp-item">
@@ -49,16 +56,49 @@
           </div>
         </div>
       </div>
+      <div class="job-box">
+        <div class="job-info">
+          <div class="company-name">Self-employed</div>
+          <div class="job-title">- Web Developer</div>
+        </div>
+        <div class="dates">September 2021 - Present</div>
+
+        <div class="experiences">
+          <div class="exp-item">
+            - Developed custom websites and web applications for local
+            businesses using a variety of frontend and backend technologies.
+          </div>
+          <div class="exp-item">
+            - Implemented responsive design and user-friendly navigation to
+            improve user experience.
+          </div>
+          <div class="exp-item">
+            - Worked closely with clients to understand their requirements and
+            delivered projects on time and within budget.
+          </div>
+          <div class="exp-item">
+            - Leveraged Github, Trello, Figma, and other tools to manage project
+            timelines, version control, and teamwork.
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="education" v-motion-slide-bottom :delay="400">
       <h2>Education</h2>
       <div class="job-box">
-        <div class="job-info">
+        <div class="job-info" id="ed">
           <div class="company-name">Palomar College</div>
           <div class="job-title">- Associate of Science: Computer Science</div>
         </div>
-        <div class="dates">August 2020 - Present</div>
+        <div class="dates">August 2020 - Dec 2022</div>
+      </div>
+      <div class="job-box">
+        <div class="job-info" id="ed">
+          <div class="company-name">California State University San Marcos</div>
+          <div class="job-title">- Bachelor of Science: Computer Science</div>
+        </div>
+        <div class="dates">Feb 2023 - Present</div>
       </div>
     </div>
 
@@ -211,11 +251,13 @@
               />
             </svg>
           </div>
+          <div class="skill">
+            Cascading Style Sheets (CSS) · GitHub · Express.js · Agile · Trello
+            · HTML · Node.js · JavaScript
+          </div>
         </div>
       </div>
     </div>
-
-    
   </div>
 </template>
 
@@ -265,6 +307,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+#ed {
+  justify-content: space-between;
+}
 .resume {
   display: flex;
   flex-direction: column;
@@ -300,9 +345,16 @@ export default defineComponent({
 }
 .company-name {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
 .job-title {
   font-family: var(--font-mono);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  max-width: 350px;
 }
 .dates {
   display: flex;
@@ -352,12 +404,24 @@ export default defineComponent({
 
 /* Mid screens */
 @media only screen and (max-width: 1100px) {
+  .experiences .exp-item {
+    margin-left: 0rem;
+    min-height: 20px;
+  }
+
+  .job-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 10px 0;
+  }
+
+  .job-title {
+    font-size: 18px;
+    max-width: 100%;
+  }
 }
 /* Small screens */
 @media only screen and (max-width: 600px) {
-  .experiences .exp-item {
-    margin-left: 0rem;
-  }
   .job-box {
     width: 80%;
   }

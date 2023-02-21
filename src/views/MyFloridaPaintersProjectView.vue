@@ -1,27 +1,31 @@
 <template>
   <div class="content">
-    <h2>BenefitTrack</h2>
+    <h2>My Florida Painters</h2>
 
     <p>
-      BenefitTrack is a responsive custom web solution for a logistics company
-      to calculate drivers' miles and run payroll based on each trip at any
-      given moment. It eliminates the need to calculate each trip manually and
-      countless spreadsheets for each driver. BenefitTrack allows users to pull
-      the data as an Excel spreadsheet if needed.
+      My Florida Painters is a painting business based in Florida. The owner
+      provided the design.
     </p>
 
-    <img src="../assets/projects/bnft/main2.png" alt="main screen" />
+    <a href="https://myfloridapainting.com/ " target="_blank"
+      >www.myfloridapainting.com</a
+    >
+
+    <img
+      src="../assets/projects/myfloridapainters/main.png"
+      alt="main screen"
+    />
 
     <div class="mobile-wrap">
       <img
         class="mobile-img"
-        src="../assets/projects/bnft/main-mobile.png"
+        src="../assets/projects/myfloridapainters/main-mobile.png"
         alt="main screen"
       />
 
       <img
         class="mobile-img"
-        src="../assets/projects/bnft/drivers-mobile.png"
+        src="../assets/projects/myfloridapainters/mobile2.png"
         alt="main screen"
       />
     </div>
@@ -32,9 +36,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HomeView",
   components: {},
-
 
   data() {
     return {
@@ -104,7 +106,7 @@ p {
   margin-bottom: 2rem;
 }
 
-a{
+a {
   all: unset;
   color: var(--accent-5);
   font-weight: 600;
@@ -112,7 +114,6 @@ a{
   margin-bottom: 2rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
 }
 .mobile-wrap {
   display: flex;

@@ -1,27 +1,19 @@
 <template>
   <div class="content">
-    <h2>BenefitTrack</h2>
+    <h2>Evialina Photography</h2>
 
     <p>
-      BenefitTrack is a responsive custom web solution for a logistics company
-      to calculate drivers' miles and run payroll based on each trip at any
-      given moment. It eliminates the need to calculate each trip manually and
-      countless spreadsheets for each driver. BenefitTrack allows users to pull
-      the data as an Excel spreadsheet if needed.
+      Evialina Photography is a small business located in San Diego. The owner provided the design. 
     </p>
 
-    <img src="../assets/projects/bnft/main2.png" alt="main screen" />
+    <a href="https://evialinaphotography.com/" target="_blank">www.evialinaphotography.com</a>
+
+    <img src="../assets/projects/ev/main.png" alt="main screen" />
 
     <div class="mobile-wrap">
       <img
         class="mobile-img"
-        src="../assets/projects/bnft/main-mobile.png"
-        alt="main screen"
-      />
-
-      <img
-        class="mobile-img"
-        src="../assets/projects/bnft/drivers-mobile.png"
+        src="../assets/projects/ev/main-mobile.png"
         alt="main screen"
       />
     </div>
@@ -32,7 +24,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HomeView",
   components: {},
 
 

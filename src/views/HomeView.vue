@@ -52,10 +52,10 @@
       <div class="small-text" v-motion-slide-bottom :delay="100">
         Hi, my name is
       </div>
-      <h2 v-motion-slide-bottom :delay="200">Elisha Rudenkov.</h2>
-      <h2 id="light" v-motion-slide-bottom :delay="300">
+      <h1 v-motion-slide-bottom :delay="200">Elisha Rudenkov.</h1>
+      <h1 id="light" v-motion-slide-bottom :delay="300">
         I build things for the web.
-      </h2>
+      </h1>
       <p v-motion-slide-bottom :delay="300">
         I am a full-stack web developer focused on Progressive Web Apps and
         fluid user experience. Currently, making awesome stuff at
@@ -76,19 +76,29 @@
       </div>
       <div class="projects-wrap">
         <projectCardVue
-          title="Polyflow"
-          description="A collaborative tool for creating and sharing playlists for a party of any size."
-          website_link="www.polyflow.it"
-          logo_name="polyflow-logo.svg"
-          :show_website_link="false"
-          status="In development"
-          icon_name="in-development.svg"
+          title="Evialina Photography"
+          description="A landing page for a small photography business."
+          website_link="www.evialinaphotography.com"
+          logo_name="ev_logo.png"
+          :show_website_link="true"
+          status="Private"
+          icon_name="private.svg"
           v-motion-slide-visible-once-right
-          :delay="100"
-          @click="$router.push('/projects/polyflow')"
-
+          :delay="300"
+          @click="$router.push('/projects/evphoto')"
         ></projectCardVue>
-
+        <projectCardVue
+          title="My Florida Painters"
+          description="A landing page for a commercial painting business."
+          website_link="www.myfloridapainting.com"
+          logo_name="mfp-logo.svg"
+          :show_website_link="true"
+          status="Private"
+          icon_name="private.svg"
+          v-motion-slide-visible-once-right
+          :delay="300"
+          @click="$router.push('/projects/myfloridapainters')"
+        ></projectCardVue>
         <projectCardVue
           title="BenefitTrack"
           description="A custom solution for a logistics company to track drivers and coordinate a complex operation. "
@@ -356,7 +366,7 @@ section {
     font-weight: 400;
     margin: 0px 0px 30px 4px;
   }
-  h2 {
+  h1 {
     margin: 0px;
     line-height: 1.1;
     font-weight: 800;
