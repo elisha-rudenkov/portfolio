@@ -1,11 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ResumeView from "../views/ResumeView.vue";
-import BenftProjectView from "../views/BenftProjectView.vue";
-import ProjectsView from "../views/ProjectsView.vue";
-import PolyflowProjectView from "../views/PolyflowProjectView.vue";
-import EvPhotoProjectView from "../views/EvPhotoProjectView.vue";
-import MyFloridaPaintersProjectView from "../views/MyFloridaPaintersProjectView.vue";
+import AllProjectsView from "../views/AllProjectsView.vue";
+import ProjectView from "../views/ProjectView.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -20,28 +18,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/projects",
     name: "projects",
-    component: ProjectsView,
+    component: AllProjectsView,
   },
   {
-    path: "/projects/bnft",
-    name: "bnft",
-    component: BenftProjectView,
+    path: "/projects/:id",
+    name: "project",
+    component: ProjectView,
   },
-  {
-    path: "/projects/polyflow",
-    name: "polyflow",
-    component: PolyflowProjectView,
-  },
-  {
-    path: "/projects/evphoto",
-    name: "evphoto",
-    component: EvPhotoProjectView,
-  },
-  {
-    path: "/projects/myfloridapainters",
-    name: "myfloridapainters",
-    component: MyFloridaPaintersProjectView,
-  },
+ 
 ];
 
 /* const router = createRouter({

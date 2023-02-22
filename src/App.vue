@@ -13,6 +13,63 @@
   <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import { db } from "@/main";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
+
+export default defineComponent({
+  data() {
+    return {};
+  },
+
+  methods: {
+    async loadUser() {
+
+      this.loadExperience();
+      this.loadProjects();
+      this.LoadEducation();
+    },
+    async loadExperience() {
+      //load collection experience
+      const experienceRef = collection(db, "experience");
+      const experienceSnapshot = await getDocs(experienceRef);
+      const experienceList = experienceSnapshot.docs.map((doc) => doc.data());
+      //push to vuex
+      experienceList.forEach((experience) => {
+        this.$store.commit("addExperience", experience);
+      });
+    },
+
+    async loadProjects() {
+      //load collection projects
+      const projectsRef = collection(db, "projects");
+      const projectsSnapshot = await getDocs(projectsRef);
+      const projectsList = projectsSnapshot.docs.map((doc) => doc.data());
+      //push to vuex
+      projectsList.forEach((project) => {
+        this.$store.commit("addProject", project);
+      });
+    },
+
+    async LoadEducation() {
+      //load collection education
+      const educationRef = collection(db, "education");
+      const educationSnapshot = await getDocs(educationRef);
+      const educationList = educationSnapshot.docs.map((doc) => doc.data());
+      //push to vuex
+      educationList.forEach((education) => {
+        this.$store.commit("addEducation", education);
+      });
+    },
+  },
+
+  mounted() {
+    this.loadUser();
+  },
+});
+</script>
+
 <style lang="scss">
 :root {
   --font-sans: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system,

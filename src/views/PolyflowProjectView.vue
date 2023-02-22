@@ -73,6 +73,8 @@ export default defineComponent({
      * @param state Optional param, if a specific notification state needs to be set.
      */
     toggleNotification(ms: number, state?: boolean) {
+      
+
       if (typeof state === "undefined") {
         this.show_notification = !this.show_notification;
       } else {

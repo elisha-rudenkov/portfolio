@@ -18,10 +18,10 @@
       }}</a>
     </div>
     <div v-else class="status">
-      <img
+     <!--  <img
         :src="require('@/assets/icons/' + icon_name + '')"
         alt="project-status"
-      />
+      /> -->
 
       {{ status }}
     </div>
@@ -54,7 +54,7 @@ export default defineComponent({
       type: Boolean,
     },
     icon_name: {
-      required: true,
+      required: false,
       type: String,
     },
     logo_name: {
@@ -109,7 +109,7 @@ cursor: pointer;
     justify-content: center;
     gap: 10px;
     font-size: 18px;
-    color: var(--accent-2);
+    color: var(--accent-3);
     font-weight: 700;
 
     img,
