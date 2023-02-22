@@ -76,51 +76,15 @@
       </div>
       <div class="projects-wrap">
         <projectCardVue
-          title="Evialina Photography"
-          description="A landing page for a small photography business."
-          website_link="www.evialinaphotography.com"
-          logo_name="ev_logo.png"
-          :show_website_link="true"
-          status="Private"
-          icon_name="private.svg"
-          v-motion-slide-visible-once-right
-          :delay="300"
-          @click="$router.push('/projects/evphoto')"
-        ></projectCardVue>
-        <projectCardVue
-          title="My Florida Painters"
-          description="A landing page for a commercial painting business."
-          website_link="www.myfloridapainting.com"
-          logo_name="mfp-logo.svg"
-          :show_website_link="true"
-          status="Private"
-          icon_name="private.svg"
-          v-motion-slide-visible-once-right
-          :delay="300"
-          @click="$router.push('/projects/myfloridapainters')"
-        ></projectCardVue>
-        <projectCardVue
-          title="BenefitTrack"
-          description="A custom solution for a logistics company to track drivers and coordinate a complex operation. "
-          website_link=" "
-          :show_website_link="false"
-          status="Private"
-          icon_name="private.svg"
-          v-motion-slide-visible-once-right
-          :delay="200"
-          @click="$router.push('/projects/bnft')"
-        ></projectCardVue>
-
-        <projectCardVue
-          title="SlavicRefugeeAid"
-          description="A landing page and FAQ for a non-profit organization during the Ukrainian crisis (Spring 2022)."
-          website_link="www.slavicrefugee.com"
-          logo_name="slavicrefugee-logo.svg"
-          :show_website_link="true"
-          status="Private"
-          icon_name="private.svg"
-          v-motion-slide-visible-once-right
-          :delay="300"
+          v-for="(project, index) in highlightedProjects"
+          :key="index"
+          :title="project.title"
+          :description="project.short_description"
+          :website_link="project.url"
+        
+          :show_website_link="project.private"
+          :status="project.status"
+          @click="$router.push('/projects/' + project.id)"
         ></projectCardVue>
       </div>
     </section>
@@ -276,6 +240,13 @@ export default defineComponent({
       navigator.clipboard.writeText(text);
     },
   },
+  computed: {
+    highlightedProjects() {
+      //filter out projects that have highlight as true
+      return this.$store.state.projects.filter((project) => project.highlight);
+    },
+  }
+
 });
 </script>
 

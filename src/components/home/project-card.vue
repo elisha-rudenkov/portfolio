@@ -18,10 +18,7 @@
       }}</a>
     </div>
     <div v-else class="status">
-     <!--  <img
-        :src="require('@/assets/icons/' + icon_name + '')"
-        alt="project-status"
-      /> -->
+      <img :src="icon" alt="project-status" />
 
       {{ status }}
     </div>
@@ -51,7 +48,7 @@ export default defineComponent({
     },
     show_website_link: {
       required: true,
-      type: Boolean,
+      type: Boolean ,
     },
     icon_name: {
       required: false,
@@ -64,6 +61,19 @@ export default defineComponent({
   },
   setup() {
     return {};
+  },
+  computed: {
+    icon(): any {
+      if (this.status == "In Development") {
+        return require("@/assets/icons/development.svg");
+      } else if (this.status == "Production") {
+        return require("@/assets/icons/prod.svg");
+      } else if (this.status == "Private") {
+        return require("@/assets/icons/private.svg");
+      } else {
+        return require("@/assets/icons/check.svg");
+      }
+    },
   },
 });
 </script>
@@ -78,7 +88,7 @@ export default defineComponent({
   max-width: 300px;
 
   box-shadow: 0 5px 5px 0 rgb(233 240 243 / 50%), 0 0 0 1px #e6ecf8;
-cursor: pointer;
+  cursor: pointer;
   border-radius: 16px;
 
   #header {
@@ -118,10 +128,8 @@ cursor: pointer;
       fill: var(--accent-2) !important;
     }
   }
-  
 }
 .project-card:hover {
-    box-shadow: 0 5px 5px 0 rgb(233 240 243 / 50%), 0 0 0 1px #d0d9eb;
-   
-  }
+  box-shadow: 0 5px 5px 0 rgb(233 240 243 / 50%), 0 0 0 1px #d0d9eb;
+}
 </style>

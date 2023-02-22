@@ -40,8 +40,6 @@ export default defineComponent({
   },
   methods: {
     async getNameFromPath(path: string) {
-      console.log("fire");
-
       this.id = path.split("/").pop();
     },
   },

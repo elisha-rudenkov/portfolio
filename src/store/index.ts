@@ -32,6 +32,7 @@ export type Project = {
   url: string;
   private: boolean;
   status: string;
+  highlight: boolean;
   //github: string;
 
   //technologies: string[];
