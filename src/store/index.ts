@@ -10,15 +10,15 @@ export type State = {
 export type Education = {
   degree: string;
   institution: string;
-  start_date: Timestamp;
-  end_date: Timestamp | null;
+  start_date: any;
+  end_date: any | null;
 };
 
 export type Experience = {
   company: string;
   title: string;
-  start_date: Timestamp;
-  end_date: Timestamp | null;
+  start_date: any;
+  end_date: any | null;
   description: string[];
 };
 
@@ -37,10 +37,7 @@ export type Project = {
   //technologies: string[];
 };
 
-export type Timestamp = {
-  seconds: number;
-  nanoseconds: number;
-};
+
 
 export default createStore({
   state: {

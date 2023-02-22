@@ -7,98 +7,43 @@
 
     <div class="experience" v-motion-slide-bottom :delay="300">
       <h2>Experiences</h2>
-      <div class="job-box">
+      <div
+        class="job-box"
+        v-for="(job, index) in $store.state.experience"
+        :key="index"
+      >
         <div class="job-info">
-          <div class="company-name">DoughRise</div>
-          <div class="job-title">- Full Stack Web Developer</div>
+          <div class="company-name">{{ job.company }}</div>
+          <div class="job-title">- {{ job.title }}</div>
         </div>
-        <div class="dates">May 2022 - Present</div>
+        <div class="dates">
+          {{ trimDate(job.start_date) }} - {{ trimDate(job.end_date) }}
+        </div>
 
-        <div class="experiences">
-          <div class="exp-item">
-            - Worked with the AGILE product development team to develop the
-            DoughRise platform
-          </div>
-          <div class="exp-item">
-            - Developed the entire backend infrastructure for the fintech
-            website using Firebase
-          </div>
-          <div class="exp-item">
-            - Built out the frontend using Vue.js paired with Typescript
-          </div>
-          <div class="exp-item">
-            - Leveraged GitHub, Firestore, Firebase, and other technologies to
-            ensure high functionality
-          </div>
-        </div>
-      </div>
-
-      <div class="job-box">
-        <div class="job-info">
-          <div class="company-name">Learning Genie</div>
-          <div class="job-title">- Educator Success Intern</div>
-        </div>
-        <div class="dates">October 2020 - July 2022</div>
-
-        <div class="experiences">
-          <div class="exp-item">
-            - Developed internal tools to optimize and automate helpdesk
-            routines in the form of intuitive web extensions
-          </div>
-          <div class="exp-item">
-            - Used Python to optimize Excel/CSV workflow
-          </div>
-          <div class="exp-item">
-            - Tested and documented third-party APIs for further integration
-          </div>
-          <div class="exp-item">
-            - Was responsible for communication with customers
-          </div>
-        </div>
-      </div>
-      <div class="job-box">
-        <div class="job-info">
-          <div class="company-name">Self-employed</div>
-          <div class="job-title">- Web Developer</div>
-        </div>
-        <div class="dates">September 2021 - Present</div>
-
-        <div class="experiences">
-          <div class="exp-item">
-            - Developed custom websites and web applications for local
-            businesses using a variety of frontend and backend technologies.
-          </div>
-          <div class="exp-item">
-            - Implemented responsive design and user-friendly navigation to
-            improve user experience.
-          </div>
-          <div class="exp-item">
-            - Worked closely with clients to understand their requirements and
-            delivered projects on time and within budget.
-          </div>
-          <div class="exp-item">
-            - Leveraged Github, Trello, Figma, and other tools to manage project
-            timelines, version control, and teamwork.
-          </div>
+        <div
+          class="experiences"
+          v-for="(desc, index) in job.description"
+          :key="index"
+        >
+          <div class="exp-item">- {{ desc }}</div>
         </div>
       </div>
     </div>
 
     <div class="education" v-motion-slide-bottom :delay="400">
       <h2>Education</h2>
-      <div class="job-box">
+      <div
+        class="job-box"
+        v-for="(job, index) in $store.state.education"
+        :key="index"
+      >
         <div class="job-info" id="ed">
-          <div class="company-name">Palomar College</div>
-          <div class="job-title">- Associate of Science: Computer Science</div>
+          <div class="company-name">{{ job.institution }}</div>
+          <div class="job-title">- {{ job.degree }}</div>
         </div>
-        <div class="dates">August 2020 - Dec 2022</div>
-      </div>
-      <div class="job-box">
-        <div class="job-info" id="ed">
-          <div class="company-name">California State University San Marcos</div>
-          <div class="job-title">- Bachelor of Science: Computer Science</div>
+        <div class="dates">
+          {{ trimDate(job.start_date) }} - {{ trimDate(job.end_date) }}
         </div>
-        <div class="dates">Feb 2023 - Present</div>
       </div>
     </div>
 
@@ -274,6 +219,19 @@ export default defineComponent({
     };
   },
   methods: {
+    /**
+     * Trims a given date to a month and year format.
+     * @param date Date to be trimmed
+     */
+    trimDate(date: any) {
+      if (date == null) return "Present";
+
+      return (
+        date.toDate().toDateString().slice(4, 7) +
+        " " +
+        date.toDate().toDateString().slice(11, 15)
+      );
+    },
     /**
      * Shows a notification for a given amount of time.
      * Sets show_notification to a given state value [optional]
